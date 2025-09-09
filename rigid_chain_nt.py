@@ -1,4 +1,8 @@
 
+###########################################################################
+# Rigid bodies connected by revolute joints (Newton)
+###########################################################################
+
 import numpy as np
 import warp as wp
 from pxr import Usd, UsdGeom
