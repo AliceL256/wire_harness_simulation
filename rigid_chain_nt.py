@@ -3,6 +3,7 @@
 # Rigid bodies connected by revolute joints (Newton)
 ###########################################################################
 
+
 import numpy as np
 import warp as wp
 from pxr import Usd, UsdGeom
@@ -19,11 +20,11 @@ class Chain:
 
         # simulation substeps
         self.sim_time = 0.0
-        self.sim_substeps = 10
+        self.sim_substeps = 20
         self.sim_dt = self.frame_dt / self.sim_substeps
 
         # number of iterations
-        self.iterations = 10
+        self.iterations = 30
 
         # viewer
         self.viewer = viewer
@@ -36,13 +37,13 @@ class Chain:
 
         builder.add_articulation(key="pendulum")
 
-        hx = 0.3 # length
+        hx = 0.1 # length
         hy = 0.02 # width
         hz = 0.02 # height
 
         #cfg = newton.ModelBuilder.JointDofConfig
 
-        self.chain_length = 15
+        self.chain_length = 50
 
         # create links
         self.links = []
@@ -78,10 +79,10 @@ class Chain:
                 target_kd=0.05,
                 limit_lower=-2*np.pi,
                 limit_upper=2*np.pi,
-                limit_ke=50.0,
-                limit_kd=2.0,
-                armature=0.005,
-                friction=0.05
+                limit_ke=0.5,
+                limit_kd=0.5,
+                armature=0.02,
+                friction=0.0
             )
 
             '''builder.add_joint_d6(
@@ -166,3 +167,4 @@ if __name__ == "__main__":
     example = Chain(viewer)
 
     newton.examples.run(example)
+
