@@ -39,7 +39,7 @@ class Chain:
         self.chain_length = 50
 
         # create multiple identical chains
-        self.num_chains = 10
+        self.num_chains = 5
         chain_spacing = hx * (self.chain_length + 5) * 0.5  # spacing to avoid overlaps
 
         for chain_idx in range(self.num_chains):
